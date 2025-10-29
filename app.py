@@ -86,10 +86,10 @@ col1, col2 = st.columns([1,1])
 if go:
     z = logit_from_inputs(diagnosis, dbp_cat, glucose, bun, hb, lax, nrs)
     p = logistic(z)
-    if p < 0.20:
+    if p < 0.35:
         tier, advice = "低风险", "例行监测；常规术前宣教与观察。"
         col1.success(f"预测概率：{p:.1%}｜风险等级：{tier}")
-    elif p < 0.50:
+    elif p < 0.65:
         tier, advice = "中等风险", "加强术前/术后血糖监测；确保补液与碳水化合物支持；评估导泻耐受。"
         col1.warning(f"预测概率：{p:.1%}｜风险等级：{tier}")
     else:
